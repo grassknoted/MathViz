@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/grassknoted/MathViz/issues"
   },
-  "homepage": "https://github.com/grassknoted/MathViz#readme"
+  "homepage": "https://github.com/grassknoted/MathViz#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
