@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs')
-const cors = require('cors')
+const cors = require('cors');
+const mysql = require('mysql');
 
 var corsOptions = {
   origin: 'http://example.com',
@@ -14,11 +15,42 @@ var corsOptions = {
 
 app.use(cors(corsOptions))
 
+con = mysql.createConnection({
+  host: "localhost",
+  user: "akash",
+  password: "g",
+  database: "MathViz"
+});
+
+function show_all_users() {
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM user_credentials", function (err, result, fields) {
+      if (err) throw err;
+      console.log("Function show_all_users called.\n"+result);
+    });
+  });
+}
+
+
+function add_user(username, password) {
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    var sql = "INSERT INTO user_credentials (username, password) VALUES ('"+username+"', '"+password+"')";
+    con.query(sql, function(err, result) {
+    // con.query("INSERT INTO user_creds (Host,Db,User,Select_priv,Insert_priv,Update_priv,Delete_priv,Create_priv,Drop_priv) VALUES ('%','db','user','Y','Y','Y','Y','Y','N');", function (err, result) {
+      if (err) throw err;
+      console.log("Added "+username+" to the database.");
+    });
+  });
+}
 
 vision_api_key = "************************************";
 
 
 app.get('/', function (req, res) {
+  // show_all_users();
   res.render("index")
 })
 
