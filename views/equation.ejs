@@ -12,8 +12,14 @@
         <label><input type="number" size="2" id="c"> x <input type="number" size="2" id="d"> y = <input type="number" size="2" id="n"></label>
         <br>
         <br>
-        <button onclick="solve()">SOLVE</button>
-        <h3 id="equation_answer"></h3>
+        <button onclick="simultaneous_solve()">SOLVE SIMULTANEOUS</button>
+        <br>
+        <br>
+        <label><input type="number" size="2" id="a_quad"> x^2 + <input type="number" size="2" id="b_quad">x + <input type="number" size="2" id="c_quad"> = 0</label>
+        <br>
+        <br>
+        <button onclick="quadratic_solve()">SOLVE QUADRATIC</button>
+        <div class="text"></div>
         <script type="text/javascript" src="js/equation.js" ></script>
     </body>
 </html>
