@@ -56,21 +56,46 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
     res.render('index');
-    console.log.apply(req.body.city);
   })
 
 app.listen(3000, function () {
   console.log('MathViz running on port 3000!')
 })
 
-app.route('/api/cats/:name').get((req, res) => {
-  const requestedCatName = req.params['name'];
-  res.send({ name: requestedCatName });
+app.post('/practice', function(req, res) {
+  // Your logic and then redirect
+  console.log("Practice called!");
+  res.redirect('/practice')
 });
 
-app.route('/api/cats').post((req, res) => {
-  res.send(201, req.body);
+app.get('/practice', function (req, res) {
+  // show_all_users();
+  res.render("practice")
+})
+
+app.post('/equation', function(req, res) {
+  // Your logic and then redirect
+  console.log("Equation Called!");
+  res.redirect('/equation')
 });
+
+app.get('/equation', function (req, res) {
+  // show_all_users();
+  res.render("equation")
+
+});
+
+app.post('/test', function(req, res) {
+  // Your logic and then redirect
+  console.log("Test Called!");
+  res.redirect('/test')
+});
+
+app.get('/test', function (req, res) {
+  // show_all_users();
+  res.render("test")
+})
+
 
 /*let city = req.body.city;
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
