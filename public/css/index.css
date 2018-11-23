@@ -61,3 +61,69 @@ body {
     height: 100%;
     width: 100%;
 }
+
+#second_screen > #first_half {
+    width: 50%;
+    height:100%;
+    position: absolute;
+    top: 100%;
+    background-color: chartreuse;
+}
+
+#second_screen > #second_half {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    background-color: brown;
+}
+#third_screen > #first_half {
+    width: 50%;
+    height:100%;
+    position: absolute;
+    top: 200%;
+    background-color: brown;
+}
+
+#third_screen > #second_half {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 200%;
+    left: 50%;
+    background-color: chartreuse;
+}
+#fourth_screen > #first_half {
+    width: 50%;
+    height:100%;
+    position: absolute;
+    top: 300%;
+    background-color: blue;
+}
+
+#fourth_screen > #second_half {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 300%;
+    left: 50%;
+    background-color: brown;
+}
+
+#fifth_screen > #first_half {
+    width: 50%;
+    height:100%;
+    position: absolute;
+    top: 400%;
+    background-color: white;
+}
+
+#fifth_screen > #second_half {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 400%;
+    left: 50%;
+    background-color: black;
+}
