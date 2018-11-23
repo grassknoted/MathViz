@@ -20,6 +20,23 @@ body {
     background-image: url('/resources/first_screen_background.jpg') ;
 }
 
+#overlay {
+    background-color: black;
+    opacity: 0.75;
+    height: 100%;
+    width: 100%;
+}
+
+#logo {
+    height: 5vw;
+    width: 5vw;
+    position: absolute;
+    left: 3vw;
+    top: 2vh;
+    display: block;
+    z-index: 10;
+}
+
 #first_screen_first_heading {
     font-size: 8vw;
     color: azure;
@@ -33,14 +50,13 @@ body {
     width: 18vw;
     font-size: 10vw;
     max-width: 1vw;
-    color: grey;
+    color: rgb(235, 60, 60);
     display: inline-block;
-    
 }
 
 #first_screen_subheading {
     font-size: 4vw;
-    color: azure;
+    color: rgb(97, 157, 235);
     font-family: monospace;
     position: absolute;
     top: 48vh;

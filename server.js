@@ -8,10 +8,10 @@ app.set('view engine', 'ejs')
 const cors = require('cors');
 const mysql = require('mysql');
 
-var corsOptions = {
-  origin: 'http://example.com',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-}
+// var corsOptions = {
+//   origin: 'http://example.com',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+// }
 
 app.use(cors(corsOptions))
 
