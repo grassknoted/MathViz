@@ -16,22 +16,22 @@ const mysql = require('mysql');
 
 // app.use(cors(corsOptions))
 
-con = mysql.createConnection({
-  host: "localhost",
-  user: "akash",
-  password: "g",
-  database: "MathViz"
-});
+// con = mysql.createConnection({
+//   host: "localhost",
+//   user: "akash",
+//   password: "g",
+//   database: "MathViz"
+// });
 
-function show_all_users() {
-  con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT * FROM user_credentials", function (err, result, fields) {
-      if (err) throw err;
-      console.log("Function show_all_users called.\n"+result);
-    });
-  });
-}
+// function show_all_users() {
+//   con.connect(function(err) {
+//     if (err) throw err;
+//     con.query("SELECT * FROM user_credentials", function (err, result, fields) {
+//       if (err) throw err;
+//       console.log("Function show_all_users called.\n"+result);
+//     });
+//   });
+// }
 
 
 function add_user(username, password) {

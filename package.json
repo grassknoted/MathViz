@@ -30,6 +30,8 @@
     "express": "^4.16.4",
     "formidable": "^1.2.1",
     "fs": "0.0.1-security",
-    "mathjs": "^5.2.3"
+    "http": "0.0.0",
+    "mathjs": "^5.2.3",
+    "mysql": "^2.16.0"
   }
 }
