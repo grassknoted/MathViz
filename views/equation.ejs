@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>MathViz - Practice</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/equation.css">
     </head>
     <body >
@@ -18,13 +19,12 @@
                     <span class="switch-button"></span>
                 </fieldset>
                 </div>
-        <h1> Equation Page - Allow single equation upload here and solve it and show similar equations. </h1>
+        <!-- <h1> Equation Page - Allow single equation upload here and solve it and show similar equations. </h1> -->
         <br>
         <br>
         <div id="simutaneous" ng-show="showHideTest">
-        <label><input type="number" size="2" id="a"> x <input type="number" size="2" id="b"> y = <input type="number" size="2" id="m"></label>
-        <br>
-        <label><input type="number" size="2" id="c"> x <input type="number" size="2" id="d"> y = <input type="number" size="2" id="n"></label>
+        <label> <input type="text" size="1" id="a" required > x + <input type="text" size="1" id="b" required > y = <input type="text" size="1" id="m" required ></label> <br>
+        <label><input type="text" size="1" id="c" required > x + <input type="text" size="1" id="d" required > y = <input type="text" size="1" id="n" required ></label>
         <br>
         <br>
         <button onclick="simultaneous_solve()">SOLVE SIMULTANEOUS</button>
@@ -32,7 +32,7 @@
         <br>
         <br>
         <div id="quadratic" ng-hide="showHideTest">
-        <label><input type="number" size="2" id="a_quad"> x^2 + <input type="number" size="2" id="b_quad">x + <input type="number" size="2" id="c_quad"> = 0</label>
+        <label><input type="text" size="1" id="a_quad"> x<span class="sup">2</span> + <input type="text" size="1" id="b_quad" required size="1">x + <input type="text" size="1" id="c_quad" required > = 0</label>
         <br>
         <br>
         <button onclick="quadratic_solve()">SOLVE QUADRATIC</button>
@@ -40,9 +40,14 @@
         <br>
         <br>
     </div>
-        <form method="post" enctype="multipart/form-data" action="/upload">
-            <input type="file" name="file">
-            <input type="submit" value="Submit">
+        <form id="uploadFile" method="post" enctype="multipart/form-data" action="/upload">
+            <div class="wrapper">
+                    <div class="file-upload">
+                      <input type="file" name="file" />
+                      <i class="fa fa-arrow-up"></i>
+                    </div>
+                  </div>
+            <input type="submit" value="Solve!"/>
         </form>
         <div class="text"></div>
     </div>

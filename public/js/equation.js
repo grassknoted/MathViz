@@ -55,11 +55,42 @@ function quadratic_solve() {
     else {
         console.log(x1+" "+x2);
     }
+    var answer = document.querySelector(".text");
+    if(x1 == x2) {
+        answer.innerHTML = "x="+x1;
+    }
+    else {
+        answer.innerHTML = "x1="+x1+" y2="+x2;
+    }
+    
 }
 
 particlesJS.load('particles-js', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/particles.json', function() {
   console.log('callback - particles.js config loaded');
 });    
+
+$('input[type=text]').blur(function(){
+    $('.placeholder').removeClass("placeholder--animate");
+    $('.border').removeClass("border--animate");
+    $('.lb').removeClass("lb--animate");
+    checkInput();
+  })
+  .focus(function() {		
+    $('.placeholder').addClass("placeholder--animate");
+    $('.border').addClass("border--animate");
+    $('.lb').addClass("lb--animate");
+    checkInput();
+  });
+ 
+  function checkInput() {
+    if ( $('input[type=text]').val()) {
+        $('.placeholder').css('display', 'none');
+     } else {
+       $('.placeholder').css('display', 'visible');
+     }
+  }
+ 
+   
 
 // http.createServer(function (req, res) {
 //   if (req.url == '/fileupload') {
