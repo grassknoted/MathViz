@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
+@import url(https://fonts.googleapis.com/css?family=Dosis:700);
 
 html, body{
     margin: 0;
@@ -13,7 +14,10 @@ h1 {
 }
 
 body {
-    background-color: white;
+    background-image: url('/resources/equations_background.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 
 #first_screen {
@@ -29,11 +33,18 @@ body {
     width: 100%;
 }
 
+#overlay2 {
+    background-color: black;
+    opacity: 0.25;
+    height: 100%;
+    width: 100%;
+}
+
 #logo {
-    height: 5vw;
-    width: 5vw;
+    height: 3vw;
+    width: 3vw;
     position: absolute;
-    left: 3vw;
+    left: 2vw;
     top: 2vh;
     display: block;
     z-index: 10;
@@ -59,7 +70,7 @@ body {
 #first_screen_subheading {
     font-size: 4vw;
     color: rgb(97, 157, 235);
-    font-family: monospace;
+    font-family: 'Roboto Mono';
     position: absolute;
     top: 48vh;
     left: 15vw;
@@ -78,15 +89,49 @@ body {
 #second_screen {
     position: absolute;
     top: 100%;
-    height: 100%;
-    width: 100%;
+    height: 0%;
+    width: 0%;
+    /* background-image: url('/resources/second_screen_background.jpg'); */
+    /* background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100vw 100vh; */
 }
 
+#solve_equations {
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 4.5em;
+    left: 4vw;
+    top: 5vh;
+    color: #55acee;
+    position: absolute;
+}
+
+#se_info {
+    top: 29vh;
+    left: 4vw;
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 3em;
+    width: 80%;
+    color: #9d8f8f;
+    text-align: justify;
+}
+
+#se_button {
+    top: 65vh;
+    width: 40vw;
+    position: absolute;
+    left: 6%;
+    font-size: 3em;
+}
+
+/* 
 #second_screen > #first_half {
     width: 50%;
     height:100%;
     position: absolute;
     top: 100%;
+    left: 0%;
     background-color: chartreuse;
 }
 
@@ -96,46 +141,78 @@ body {
     position: absolute;
     top: 100%;
     left: 50%;
-    background-color: brown;
-}
+    z-index: 2;
+    background: black;
+} */
 #third_screen > #first_half {
     width: 50%;
     height:100%;
     position: absolute;
-    top: 200%;
-    background-color: brown;
+    top: 100%;
+    background-color: antiquewhite;
 }
 
 #third_screen > #second_half {
     width: 50%;
     height: 100%;
     position: absolute;
-    top: 200%;
+    top: 100%;
     left: 50%;
-    background-color: chartreuse;
 }
+
+#tt_heading {
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 4.5em;
+    left: 4vw;
+    top: 5vh;
+    color: #e67e22;
+    position: absolute;
+}
+
+#tt_desc {
+    top: 32vh;
+    color: #84a1be;
+    left: 4vw;
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 3em;
+    width: 80%;
+    text-align: justify;
+}
+
+#tt_button {
+    top: 63vh;
+    width: 40vw;
+    position: absolute;
+    left: 6%;
+    font-size: 3em;
+}
+
 #fourth_screen > #first_half {
     width: 50%;
     height:100%;
     position: absolute;
-    top: 300%;
-    background-color: blue;
+    top: 200%;
+    background-image: url('/resources/test.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 #fourth_screen > #second_half {
     width: 50%;
     height: 100%;
     position: absolute;
-    top: 300%;
+    top: 200%;
     left: 50%;
-    background-color: brown;
+    background-color: azure;
 }
 
 #fifth_screen > #first_half {
     width: 50%;
     height:100%;
     position: absolute;
-    top: 400%;
+    top: 300%;
     background-color: white;
 }
 
@@ -143,7 +220,134 @@ body {
     width: 50%;
     height: 100%;
     position: absolute;
-    top: 400%;
+    top: 300%;
     left: 50%;
-    background-color: black;
+    background-image: url('/resources/practice.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#pq_heading {
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 4.5em;
+    left: 4vw;
+    top: 5vh;
+    color: #2ecc71;
+    position: absolute;
+}
+
+#pq_desc {
+    top: 24vh;
+    color: #84a1be;
+    left: 4vw;
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 3em;
+    width: 80%;
+    text-align: justify;
+}
+
+#pq_button {
+    top: 80vh;
+    width: 40vw;
+    position: absolute;
+    left: 6%;
+    font-size: 3em;
+}
+
+.btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+  }
+  
+  .blue {
+    background-color: #55acee;
+    box-shadow: 0px 5px 0px 0px #3C93D5;
+  }
+  
+  .blue:hover {
+    background-color: #6FC6FF;
+  }
+  .btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+  }
+  .orange {
+    background-color: #e67e22;
+    box-shadow: 0px 5px 0px 0px #CD6509;
+  }
+  
+  .orange:hover {
+    background-color: #FF983C;
+  }
+  
+  .green {
+    background-color: #2ecc71;
+    box-shadow: 0px 5px 0px 0px #15B358;
+  }
+  
+  .green:hover {
+    background-color: #48E68B;
+  }
+
+  /* Range */
+  .value {
+    border-bottom: 4px dashed #bdc3c7;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10em;
+    width: 30vw; 
+    height: 10vh;
+    line-height: 60px;
+    margin: 40px auto;
+    letter-spacing: -.07em;
+    font-family: 'Dosis';
+    text-shadow: white 2px 2px 2px;
+  }
+  input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    background-color: #bdc3c7;
+    width: 30vw;
+    height: 0.5vh;
+    border-radius: 5px;
+    margin: 0 auto;
+    outline: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #e74c3c;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+  }​
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background-color: white;
+      border: 2px solid #e74c3c;
+    }
+    input[type="range"]::-webkit-slider-thumb:active {
+      transform: scale(1.6);
+    }
+
+.value {
+    position: absolute;
+    top: 58vh;
+    left: 9vw;
+}
+
+#nqq {
+    position: absolute;
+    top:78vh; 
+    left: 9vw;
 }

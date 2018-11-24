@@ -2,24 +2,195 @@
 <html>
     <head>
         <title>MathViz - Practice</title>
+        <link rel="stylesheet" href="css/equation.css">
     </head>
-    <body>
+    <body >
+            <div id="particles-js"></div>
+            <div id="whole_thing">
+        <div id="angDiv" ng-app="ssbApp" ng-controller="ssbCtrl">
+        <div class="space">
+                <fieldset class="dswitch switch-two">
+                    <legend></legend>
+                    <input type="radio" name="view" id="yes" checked name="showHideExample" ng-model="showHideTest" ng-value="true" />
+                    <label for="yes">Simultaneous Equations</label>
+                    <input type="radio" name="view" id="no" name="showHideExample" ng-model="showHideTest" ng-value="false"/>
+                    <label for="no">Quadratic Equations</label> 
+                    <span class="switch-button"></span>
+                </fieldset>
+                </div>
         <h1> Equation Page - Allow single equation upload here and solve it and show similar equations. </h1>
         <br>
         <br>
+        <div id="simutaneous" ng-show="showHideTest">
         <label><input type="number" size="2" id="a"> x <input type="number" size="2" id="b"> y = <input type="number" size="2" id="m"></label>
         <br>
         <label><input type="number" size="2" id="c"> x <input type="number" size="2" id="d"> y = <input type="number" size="2" id="n"></label>
         <br>
         <br>
         <button onclick="simultaneous_solve()">SOLVE SIMULTANEOUS</button>
+        </div>
         <br>
         <br>
+        <div id="quadratic" ng-hide="showHideTest">
         <label><input type="number" size="2" id="a_quad"> x^2 + <input type="number" size="2" id="b_quad">x + <input type="number" size="2" id="c_quad"> = 0</label>
         <br>
         <br>
         <button onclick="quadratic_solve()">SOLVE QUADRATIC</button>
+        </div>
+        <br>
+        <br>
+    </div>
+        <form method="post" enctype="multipart/form-data" action="/upload">
+            <input type="file" name="file">
+            <input type="submit" value="Submit">
+        </form>
         <div class="text"></div>
+    </div>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+        <script>
+            var ssbApp = angular.module("ssbApp", []);
+    ssbApp.controller('ssbCtrl', function ($scope, $http) {
+        $scope.showHideTest = false;
+        $scope.showHideTest = true;
+    });
+
+
+            if("<%= imageUploaded %>" == 1) {
+                function alphaOnly(a) {
+                    var b = [];
+                    for (var i = 0; i < a.length; i++) {
+                        if (a[i] >= 'A' && a[i] <= 'z') b.push(a[i]);//b += a[i];
+                    }
+                    return b;
+                }
+            
+                var myimg = document.createElement("img");
+                myimg.src="./image.png";
+                myimg.className="abc";
+                document.body.appendChild(myimg);
+            
+                Tesseract.recognize("./image.png")
+                .then(function(result){
+                    result=result["text"].split("\n").filter(v=>v!='');
+                    console.log(result);
+            
+            
+                    var a,b,m,c,d,n;
+            
+                    if (result.length==1) {
+                        if (alphaOnly(result[0]).length>1) {
+                        alert("Unsolvabe");
+                        }
+                        first=result[0].split("=");
+                        m=first[1];
+                        if (first[0].split("+").length==1 && first[0].split("=").length==1) {
+                        ax=first[0].replace(/\D/g,'');
+                        console.log(ax);
+                        }
+                        else {		// quadratic
+                        if (first[0].split("+").length==2) {
+                            res = first[0].split("+");
+                            console.log(res[0].split(/[a-z, A-Z]/));
+                            quadcomp = res[0].split(/[a-z, A-Z]/);
+                            a=quadcomp[0];
+                            if (a=="")
+                            a="1";
+                            lincomp = res[1].split(/[a-z, A-Z]/);
+                            b=lincomp[0];
+                            if (b=="")
+                            b="1";
+                            console.log(a, b, m);
+                            
+            
+                        }
+                        else {
+                            res = first[0].split("-");
+                            console.log(res[0].split(/[a-z, A-Z]/));
+                            quadcomp = res[0].split(/[a-z, A-Z]/);
+                            a=quadcomp[0];
+                            if (a=="")
+                            a="1";
+                            lincomp = res[1].split(/[a-z, A-Z]/);
+                            b=lincomp[0];
+                            if (b=="")
+                            b="1";
+                            console.log(a, b, m);
+            
+                        }
+                        }
+                    }
+            
+                    else if (result.length==2) {
+                        var variables = [...new Set([...alphaOnly(result[0]), ...alphaOnly(result[1])])];
+                        // variables = union_arrays(alphaOnly(result[0]), alphaOnly(result[1]));
+                        if (variables.length>2)
+                        alert("Unsolvabe");
+                        console.log(variables);
+            
+            
+                        first=result[0];
+                        first=first.split("=");
+                        m=first[1];
+                        first=first[0].split("+");
+                        if (first.length==2) {
+                        ax = first[0].replace(/\D/g,'');
+                        by = first[1].replace(/\D/g,'');
+                        }
+                        else {
+                        first=first[0].split("-");
+                        ax = first[0].replace(/\D/g,'');
+                        by = first[1].replace(/\D/g,'');
+                        }
+                        console.log(ax, by, m);
+            
+                        second=result[1];
+                        second=second.split("=");
+                        n=second[1];
+                        second=second[0].split("+");
+                        if (second.length==2) {
+                        cx = second[0].replace(/\D/g,'');
+                        dy = second[1].replace(/\D/g,'');
+                        }
+                        else {
+                        second=second[0].split("-");
+                        cx = second[0].replace(/\D/g,'');
+                        dy = second[1].replace(/\D/g,'');
+                        dy = "-"+dy;
+                        }
+                        console.log(cx, dy, n);
+
+
+                        a_value = parseFloat(ax);
+                        b_value = parseFloat(by);
+                        m_value = parseFloat(m);
+                        
+                        c_value = parseFloat(cx);
+                        d_value = parseFloat(dy);
+                        n_value = parseFloat(n);
+
+                        console.log("x = "+((n_value*b_value - m_value*d_value)/(b_value*c_value - a_value*d_value)));
+                        console.log("y = "+((m_value*c_value - n_value*a_value)/(b_value*c_value - a_value*d_value)));
+
+                        var x = ((n_value*b_value - m_value*d_value)/(b_value*c_value - a_value*d_value));
+                        var y = ((m_value*c_value - n_value*a_value)/(b_value*c_value - a_value*d_value));    
+
+                        var answer = document.querySelector(".text");
+
+                        answer.innerHTML = "x="+x+" y="+y;
+                    }
+            
+                    else {
+                        alert("support coming soon");
+                    }
+            
+            
+                })
+            }
+        
+        </script>
         <script type="text/javascript" src="js/equation.js" ></script>
     </body>
 </html>

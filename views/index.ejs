@@ -8,6 +8,7 @@
   </head>
   <body>
       <div id="first_screen">
+        <div id="fst"></div>
         <div id="overlay"></div>
           <a href="http://localhost:3000/"><img src="/resources/icon.png" alt="Couldn't load logo."id="logo"> </a>
           <h1 id="first_screen_first_heading">Ma<span id="math_sign" >+</span>&nbsp;&nbsp;hViz</h1>
@@ -15,33 +16,59 @@
           <br>
           <h3 id="first_screen_subheading"> A Visual Math Equation Solver</h3>
       </div>
-    <div id="second_screen">
+    <!-- <div id="second_screen">
       <div id="first_half"></div>
-      <h1>Solve Equation</h1>
-      <form action="/equation" method = "post">
-        <button>Solve Equations</button>
-      </form>
       <div id="second_half"></div>
-    </div>
+    </div> -->
     <div id="third_screen">
       <div id="first_half">
-        <h1>Take a test</h1>
-        <form action="/test" method = "post">
-          <button>Take a Test</button>
-        </form>
+          <!-- <div id="overlay2"></div> -->
+          <h1 id="solve_equations">Solve <br>Equations</h1>
+          <p id="se_info"> This features solves both Simultaneous Equations (of two variables), as well as Quadratic Equations to the Second Degree.</p>
+          <form action="/equation" method = "post">
+            <button id="se_button" class="btn blue" >Solve Equations</button>
+          </form>
       </div>
       <div id="second_half"></div>
     </div>
     <div id="fourth_screen">
-      <div id="first_half"></div>
+      <div id="first_half">
+          
+      </div>
       <div id="second_half">
-        <h1>Practice Questions</h1>
-        <form action="/practice" method = "post">
-          <label>Number of Questions: <input type="number" name="no_of_questions"></label>
-          <button>Practice Questions</button>
-        </form>
+          <h1 id="tt_heading">Take <br>A<br> Test</h1>
+          <p id="tt_desc">Try one of our tests and see how you stand when pitted amongst the rest of the world.</p>
+          <form action="/test" method = "post">
+            <button id="tt_button" class="btn orange">Take a Test</button>
+          </form>
       </div>
     </div>
+    <div id="fifth_screen">
+        <div id="first_half">
+            <h1 id="pq_heading">Practice Questions</h1>
+            <p id="pq_desc">Practice a desired number of math problems to sharpen your skills, and get the edge! <br><br> Select Number of Questions:</p>
+            <form action="/practice" method = "post">
+              <input id="nqq" type="range" min="0" max="10" step="1" value="0" name="no_of_questions">
+              <button class="btn green" id="pq_button">Practice Questions</button>
+            </form>
+            <div class="value">0</div>
+        </div>
+        <div id="second_half">
+          
+        </div>
+      </div>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"></script>
+    <!-- <script>
+    var controller = new ScrollMagic.Controller();
+
+    // create a scene
+    new ScrollMagic.Scene({
+        duration: 500,	// the scne should last for a scroll distance of 100px
+        offset: 500		// start this scene after scrolling for 50px
+      })
+      .setPin("#fst") // pins the element for the the scene's duration
+      .addTo(controller); 
+    </script> -->
   <script type="text/javascript" src="js/index.js" ></script>
   </body>
 </html>

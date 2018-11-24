@@ -20,3 +20,13 @@ setInterval(
             math_sign_alt = 0;
         }
     }, 1000);
+
+var elem = document.querySelector('input[type="range"]');
+
+var rangeValue = function(){
+    var newValue = elem.value;
+    var target = document.querySelector('.value');
+    target.innerHTML = newValue;
+}
+
+elem.addEventListener("input", rangeValue);

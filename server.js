@@ -9,6 +9,8 @@ app.set('view engine', 'ejs')
 const cors = require('cors');
 const mysql = require('mysql');
 
+const formidable = require('formidable');
+
 // var corsOptions = {
 //   origin: 'http://example.com',
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
@@ -82,7 +84,7 @@ app.post('/equation', function(req, res) {
 
 app.get('/equation', function (req, res) {
   // show_all_users();
-  res.render("equation")
+  res.render("equation", {imageUploaded: 0});
 
 });
 
@@ -95,8 +97,63 @@ app.post('/test', function(req, res) {
 app.get('/test', function (req, res) {
   // show_all_users();
   res.render("test")
-})
+});
 
+const http = require("http");
+const path = require("path");
+const fs = require("fs");
+
+const httpServer = http.createServer(app);
+
+const PORT = process.env.PORT || 3000;
+
+httpServer.listen(3001, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+// put the HTML file containing your form in a directory named "public" (relative to where this script is located)
+app.get("/", express.static(path.join(__dirname, "./views")));
+
+const multer = require("multer");
+
+const handleError = (err, res) => {
+  res
+    .status(500)
+    .contentType("text/plain")
+    .end("Oops! Something went wrong!");
+};
+
+const upload = multer({
+  dest: "./public"
+});
+
+
+app.post(
+  "/upload",
+  upload.single("file"),
+  (req, res) => {
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, "./public/image.png");
+
+    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
+      fs.rename(tempPath, targetPath, err => {
+        if (err) return handleError(err, res);
+
+        
+        res.render("equation", {imageUploaded: 1})
+      });
+    } else {
+      fs.unlink(tempPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(403)
+          .contentType("text/plain")
+          .end("Only .png files are allowed!");
+      });
+    }
+  }
+);
 
 /*let city = req.body.city;
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
