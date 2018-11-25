@@ -27,7 +27,7 @@
         <label><input type="text" size="1" id="c" required > x + <input type="text" size="1" id="d" required > y = <input type="text" size="1" id="n" required ></label>
         <br>
         <br>
-        <button onclick="simultaneous_solve()">SOLVE SIMULTANEOUS</button>
+        <button class="btn blue" id="solvebut" onclick="simultaneous_solve()">SOLVE SIMULTANEOUS</button>
         </div>
         <br>
         <br>
@@ -35,7 +35,7 @@
         <label><input type="text" size="1" id="a_quad"> x<span class="sup">2</span> + <input type="text" size="1" id="b_quad" required size="1">x + <input type="text" size="1" id="c_quad" required > = 0</label>
         <br>
         <br>
-        <button onclick="quadratic_solve()">SOLVE QUADRATIC</button>
+        <button class="btn blue" id="solvebut" onclick="quadratic_solve()">SOLVE QUADRATIC</button>
         </div>
         <br>
         <br>
@@ -47,7 +47,7 @@
                       <i class="fa fa-arrow-up"></i>
                     </div>
                   </div>
-            <input type="submit" value="Solve!"/>
+            <input type="submit" class="btn orange" id="solve_button" value="Solve!"/>
         </form>
         <div class="text"></div>
     </div>
@@ -72,10 +72,10 @@
                     return b;
                 }
             
-                var myimg = document.createElement("img");
-                myimg.src="./image.png";
-                myimg.className="abc";
-                document.body.appendChild(myimg);
+                // var myimg = document.createElement("img");
+                // myimg.src="./image.png";
+                // myimg.className="abc";
+                // document.body.appendChild(myimg);
             
                 Tesseract.recognize("./image.png")
                 .then(function(result){
@@ -184,7 +184,7 @@
 
                         var answer = document.querySelector(".text");
 
-                        answer.innerHTML = "x="+x+" y="+y;
+                        answer.innerHTML = "x = "+x.toFixed(3)+"<br>y = "+y.toFixed(3);
                     }
             
                     else {

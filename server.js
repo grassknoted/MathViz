@@ -73,7 +73,7 @@ app.post('/practice', function(req, res) {
 
 app.get('/practice', function (req, res) {
   // show_all_users();
-  res.render("practice")
+  res.render("practice", {no_of_questions:3});
 })
 
 app.post('/equation', function(req, res) {

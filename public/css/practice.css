@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>NGO Portal | Volunteer Registration</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <!-- <link rel="styles/volunteer_registration.css" rel="stylesheet"> -->
-        <style>
-        body {
+body {
 margin: 0;
 background: #fbc02d;
 font-family: 'Noto Sans', sans-serif;
 overflow-x: hidden;
 }
+
 h1 {
 position: relative;
 color: #fff;
 opacity: 0;
 transition: .8s ease-in-out;
 }
+
 #progress {
 position: absolute;
 /*background: #c49000;*/
@@ -29,12 +23,15 @@ background-size: cover;
 width: 0;
 transition: width 0.2s ease-in-out;
 }
+
 .center {
 height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
 }
+
+
 #register {
 background: #fff;
 position: relative;
@@ -42,6 +39,7 @@ width: 550px;
 box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
 transition: transform .1s ease-in-out;
 }
+
 #register.close {
 width: 0;
 padding: 0;
@@ -49,6 +47,7 @@ overflow: hidden;
 transition: .8s ease-in-out;
 box-shadow: 0 16px 24px 2px rgba(0,0,0,0);
 }
+
 /*mongo restore*/
 #forwardButton {
 position: absolute;
@@ -74,6 +73,7 @@ cursor: pointer;
 #forwardButton:hover {color: #c49000}
 .wrong #forwardButton {color: #ff2d26}
 .close #forwardButton, .close #previousButton {color: #fff}
+
 #inputContainer {
 position: relative;
 padding: 30px 20px 20px 20px;
@@ -81,6 +81,7 @@ margin: 10px 60px 10px 10px;
 opacity: 0;
 transition: opacity .3s ease-in-out;
 }
+
 #inputContainer input {
 position: relative;
 width: 100%;
@@ -92,6 +93,7 @@ background: transparent;
 box-shadow: none;
 font-family: 'Noto Sans', sans-serif;
 }
+
 #inputLabel {
 position: absolute;
 pointer-events: none;
@@ -101,6 +103,7 @@ font-size: 20px;
 font-weight: bold;
 transition: .2s ease-in-out;
 }
+
 #inputContainer input:valid + #inputLabel {
 top: 6px;
 left: 42px; /* space for previous arrow */
@@ -109,77 +112,20 @@ font-size: 11px;
 font-weight: normal;
 color: #9e9e9e;
 }
+
 #inputProgress {
 border-bottom: 3px solid #fbc02d;
 width: 0;
 transition: width .6s ease-in-out;
 }
+
 .wrong #inputProgress {
 border-color: #ff2d26;
 }
+
 @media (max-width: 420px) {
 #forwardButton {right: 10px}
 #previousButton {left: 10px}
 #inputLabel {left: 0}
 #inputContainer {padding-left: 0; margin-right:20px}
 }
-#prompt {
-    height: 20vh;
-    width: 40vw;
-    background-color: black;
-    opacity: 0.7;
-    position: absolute;
-    top: 15vh;
-    border-radius: 13px;
-    text-align: center;
-    color: aliceblue;   
-    display: none;
-    justify-content:center;
-    align-content:center;
-    flex-direction:column;
-    font-size: 1.2em;
-}
-        </style>
-    </head>
-    <body>
-        <div id="progress"></div>
-            <div class="center">
-                <div id="prompt">
-                </div>
-              <div id="register"> 
-                
-                <i id="previousButton" class="ion-android-arrow-back">⇦</i> 
-                <i id="forwardButton" class="ion-android-arrow-forward">⇨</i>
-                
-                <datalist id="slots">
-                        <option value="Monday, Wednesday, Friday">
-                        <option value="Tuesday, Thursday, Saturday">
-                        <option value="Saturday and Sunday">
-                    </datalist>
-
-                <datalist id="grades">
-                    <option value="Grades 1-4">
-                    <option value="Grades 5-8">
-                    <option value="Grades 9 or 10">
-                </datalist>
-
-                <datalist id="subjects">
-                        <option value="English">
-                        <option value="Hindi">
-                        <option value="Math">
-                        <option value="Science">
-                        <option value="Social Science">
-                </datalist>
-                      
-            </select>
-
-                <div id="inputContainer">
-                  <input id="inputField" required multiple/>
-                  <label id="inputLabel"></label>
-                  <div id="inputProgress"></div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript" src="js/practice.js"></script>
-    </body>
-</html>

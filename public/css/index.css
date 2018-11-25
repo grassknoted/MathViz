@@ -111,7 +111,7 @@ body {
     left: 4vw;
     position: absolute;
     font-family: sans-serif;
-    font-size: 3em;
+    font-size: 2em;
     width: 80%;
     color: #9d8f8f;
     text-align: justify;
@@ -170,18 +170,18 @@ body {
 }
 
 #tt_desc {
-    top: 32vh;
+    top: 42vh;
     color: #84a1be;
     left: 4vw;
     position: absolute;
     font-family: sans-serif;
-    font-size: 3em;
+    font-size: 2em;
     width: 80%;
     text-align: justify;
 }
 
 #tt_button {
-    top: 63vh;
+    top: 73vh;
     width: 40vw;
     position: absolute;
     left: 6%;
@@ -232,18 +232,18 @@ body {
     font-family: 'Roboto Mono', sans-serif;
     font-size: 4.5em;
     left: 4vw;
-    top: 5vh;
+    top: 2vh;
     color: #2ecc71;
     position: absolute;
 }
 
 #pq_desc {
-    top: 24vh;
+    top: 25vh;
     color: #84a1be;
     left: 4vw;
     position: absolute;
     font-family: sans-serif;
-    font-size: 3em;
+    font-size: 2em;
     width: 80%;
     text-align: justify;
 }
